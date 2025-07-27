@@ -15,7 +15,8 @@ An application where users can sign in, create some boards, share them with othe
 
 - [x] Setup authentication
 - [x] Setup DB schema (boards, lists, and cards)
-- [ ] board creation
+- [x] board creation
+- [ ] board deletion
 - [ ] list creation within boards
 - [ ] cards creation within lists
 - [ ] drag and drop functionality for cards between lists
