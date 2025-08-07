@@ -20,6 +20,8 @@ model Board {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    isClosed Boolean @default(false)
+
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
 
@@ -32,6 +34,8 @@ model List {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
+    isArchived Boolean @default(false)
+
     board   Board  @relation(fields: [boardId], references: [id])
     boardId String
 
@@ -43,6 +47,8 @@ model Card {
     name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    isArchived Boolean @default(false)
 
     list   List @relation(fields: [listId], references: [id])
     listId Int

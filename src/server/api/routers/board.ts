@@ -5,6 +5,7 @@ export const boardRouter = createTRPCRouter({
   getAll: protectedProcedure.query(async ({ ctx }) => {
     const boards = await ctx.db.board.findMany({
       where: {
+        isClosed: false,
         createdBy: {
           id: ctx.session.user.id,
         },
@@ -25,6 +26,18 @@ export const boardRouter = createTRPCRouter({
               id: ctx.session.user.id,
             },
           },
+        },
+      });
+    }),
+
+  delete: protectedProcedure
+    .input(z.object({ boardId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.db.board.update({
+        where: { id: input.boardId },
+        data: {
+          isClosed: true,
+          updatedAt: new Date(),
         },
       });
     }),

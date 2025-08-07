@@ -25,7 +25,7 @@ export default function BoardList({ initialData }: BoardListProps) {
         >
           <Link href={`/boards/${board.id}`}>
             <Card className="w-full transition-colors hover:bg-accent">
-              <CardHeader>
+              <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle>{board.name}</CardTitle>
               </CardHeader>
             </Card>
